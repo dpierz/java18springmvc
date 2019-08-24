@@ -1,12 +1,11 @@
 package pl.sda.springmvc.springmvcDemo.repository;
 
+import org.springframework.data.jpa.repository.JpaRepository;
 import pl.sda.springmvc.springmvcDemo.entity.ProductEntity;
 
 import java.util.List;
 import java.util.Optional;
 
-public interface ProductRepository {
-    void addProduct(ProductEntity productEntity);
-    List<ProductEntity> getProducts();
-    Optional<ProductEntity> getProductById(long idProduct);
+public interface ProductRepository extends JpaRepository<ProductEntity, Long> {
+
 }

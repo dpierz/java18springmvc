@@ -31,12 +31,12 @@ public class ProductServiceImpl implements ProductService {
                 .name(newProductDTO.getName())
                 .price(newProductDTO.getPrice())
                 .build();
-        repository.addProduct(productEntity);
+        repository.save(productEntity);
     }
 
     @Override
     public List<ProductDTO> getProducts() {
-        return repository.getProducts()
+        return repository.findAll()
                 .stream()
                 .map(ModelMapper::map)
                 .collect(Collectors.toList());
@@ -51,7 +51,7 @@ public class ProductServiceImpl implements ProductService {
     public ProductDTO getProductById(long idProduct)
             throws NotFoundProductException {
         Optional<ProductEntity> productById = repository
-                .getProductById(idProduct);
+                .findById(idProduct);
         return productById
                 .map(ModelMapper::map)
                 .orElseThrow(() ->
