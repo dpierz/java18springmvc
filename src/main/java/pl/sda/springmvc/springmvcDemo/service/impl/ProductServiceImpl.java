@@ -32,7 +32,7 @@ public class ProductServiceImpl implements ProductService {
                 .price(newProductDTO.getPrice())
                 .build();
         repository.save(productEntity);
-    }
+}
 
     @Override
     public List<ProductDTO> getProducts() {

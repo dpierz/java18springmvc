@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="layout/layout"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.ultraq.net.nz/thymeleaf/layout ">
+</head>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div layout:fragment="content">
+    <div class="container">
+        Login:
+        <form th:action="@{/login}" method="post" th:object="${loginForm}">
+            <label>Name</label>
+            <input type="text" th:field="*{username}" />
+            <br />
+            <label>Password</label>
+            <input th:type="password" th:field="*{password}" />
+            <br />
+            <div th:if="${#fields.hasErrors('username')}" th:errors="*{username}">Price Error</div>
+            <button th:type="submit">Login</button>
+        </form>
+    </div>
+</div>
+</body>
+</html>
